@@ -1,20 +1,15 @@
 import sys
 
-def bank_account():
-    name = input("Enter customer name: ")
-
-    balance = float(input("Enter initial balance: "))
+def bank_account(name,balance,deposit,withdraw):
+    
 
     print("\nCustomer Name:", name)
     print("Initial Balance: Rs.", balance)
 
-    deposit = float(input("\nEnter amount to deposit: "))
+    
     balance = balance + deposit
 
     print("Balance after deposit: Rs.", balance)
-
-    withdraw = float(input("\nEnter amount to withdraw: "))
-
     if withdraw <= balance:
         balance = balance - withdraw
         print("Withdrawal successful.")
@@ -25,4 +20,12 @@ def bank_account():
     print("Updated Account Balance: Rs.", balance)
 
 if __name__ == "__main__":
-    bank_account()
+    if len(sys.argv) == 5:
+        name = sys.argv[1]
+        balance = float(sys.argv[2])
+        deposit = float(sys.argv[3])
+        withdraw = float(sys.argv[4])
+
+    bank_account(name,balance,deposit,withdraw)
+else:
+    print("Please provide details")
